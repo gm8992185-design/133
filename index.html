@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Belle Lingerie | Alta Lingerie & Elegância</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        marsala: {
+                            DEFAULT: '#6B1D2F',
+                            dark: '#4A1320',
+                            light: '#8C2B42',
+                            soft: '#FAF0F2'
+                        },
+                        offwhite: {
+                            DEFAULT: '#FAF8F5',
+                            pure: '#FFFFFF',
+                            dark: '#F0ECE1',
+                            warm: '#F5F0EB'
+                        },
+                        gold: {
+                            DEFAULT: '#C5A059',
+                            light: '#E5C483'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAF8F5; color: #2D2D2D; }
+        .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+        .smooth-transition { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="bg-offwhite text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Top Banner -->
+    <div class="bg-marsala text-offwhite text-xs py-2 text-center font-light tracking-wide px-4">
+        <p>✨ FRETE GRÁTIS nas compras acima de R$ 199,00 | Parcele em até 3x sem juros</p>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-offwhite/95 backdrop-blur-md border-b border-marsala/10 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center sm:hidden">
+                    <button id="mobile-menu-btn" class="text-marsala p-2 rounded-md hover:bg-marsala/5">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Logo -->
+                <div class="flex-1 text-center sm:text-left">
+                    <a href="#" class="inline-block">
+                        <h1 class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-marsala">LA BELLE</h1>
+                        <span class="block text-[10px] tracking-[0.3em] uppercase text-gold font-medium -mt-1">Lingerie</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden sm:flex space-x-8 text-sm font-medium text-gray-700">
+                    <a href="#catalogo" class="hover:text-marsala smooth-transition">Coleção</a>
+                    <a href="#mostruario" class="hover:text-marsala smooth-transition">Mostruário</a>
+                    <a href="#sobre" class="hover:text-marsala smooth-transition">Sobre a Marca</a>
+                </nav>
+
+                <!-- Actions (Cart & Table Size) -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="openSizeGuide()" class="text-xs text-marsala hover:text-marsala-dark hidden md:flex items-center gap-1 font-medium bg-marsala/5 px-3 py-1.5 rounded-full border border-marsala/10">
+                        <i class="fa-solid fa-[#6B1D2F] fa-ruler-horizontal"></i> Tabela de Medidas
+                    </button>
+
+                    <button id="cart-btn" onclick="toggleCart()" class="relative p-2 text-marsala hover:bg-marsala/5 rounded-full smooth-transition">
+                        <i class="fa-solid fa-bag-shopping text-xl"></i>
+                        <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-offwhite bg-marsala rounded-full transform translate-x-1/4 -translate-y-1/4">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden sm:hidden bg-offwhite border-b border-marsala/10 px-4 pt-2 pb-4 space-y-2">
+            <a href="#catalogo" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-marsala hover:bg-marsala/5">Coleção</a>
+            <a href="#mostruario" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-marsala hover:bg-marsala/5">Mostruário</a>
+            <a href="#sobre" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-marsala hover:bg-marsala/5">Sobre a Marca</a>
+            <button onclick="openSizeGuide()" class="w-full text-left px-3 py-2 text-sm text-marsala font-medium flex items-center gap-2">
+                <i class="fa-solid fa-ruler-horizontal"></i> Tabela de Medidas
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-offwhite-warm py-16 lg:py-24 overflow-hidden border-b border-marsala/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <span class="inline-block text-xs font-semibold tracking-widest text-gold uppercase mb-3">Coleção Exclusiva</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-marsala leading-tight mb-6">
+                        Realce sua beleza natural com sofisticação.
+                    </h2>
+                    <p class="text-gray-600 text-lg mb-8 max-w-lg mx-auto lg:mx-0 font-light">
+                        Conjuntos em renda trabalhada com caimento perfeito, sustentação impecável e o conforto que você merece todos os dias.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#catalogo" class="bg-marsala text-offwhite hover:bg-marsala-dark px-8 py-4 rounded-full font-medium text-sm tracking-wider uppercase smooth-transition shadow-lg hover:shadow-marsala/20 text-center">
+                            Ver Produtos (R$ 54,90)
+                        </a>
+                    </div>
+                </div>
+                <div class="relative flex justify-center">
+                    <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-marsala/5 border border-gold/30 flex items-center justify-center p-4">
+                        <img src="conjunto-marsala.jpg" alt="La Belle Lingerie Destaque" class="w-full h-full object-cover rounded-full shadow-2xl border-4 border-offwhite" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de Produtos -->
+    <section id="catalogo" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
+        <div class="text-center mb-12">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-marsala mb-3">Nossos Conjuntos</h2>
+            <div class="w-16 h-0.5 bg-gold mx-auto mb-4"></div>
+            <p class="text-gray-600 max-w-xl mx-auto">Peças selecionadas em renda premium com valor especial promocional por tempo limitado.</p>
+        </div>
+
+        <!-- Grid de Produtos -->
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Os cards de produtos serão renderizados via JS -->
+        </div>
+    </section>
+
+    <!-- Seção Mostruário de Fotos Reais -->
+    <section id="mostruario" class="bg-offwhite-dark py-16 border-t border-b border-marsala/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs font-semibold tracking-widest text-gold uppercase">Galeria Real</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-marsala mt-1 mb-3">Mostruário de Peças</h2>
+                <div class="w-16 h-0.5 bg-gold mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-xl mx-auto">Confira os detalhes da renda e acabamento direto do nosso estoque.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Foto 1 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md cursor-pointer bg-white" onclick="openImageModal('conjunto-azul.jpg', 'Conjunto Renda Azul Royal')">
+                    <img src="conjunto-azul.jpg" alt="Mostruário Azul Royal" class="w-full h-80 object-cover group-hover:scale-105 smooth-transition" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=600&q=80'">
+                    <div class="absolute inset-0 bg-marsala/40 opacity-0 group-hover:opacity-100 smooth-transition flex items-center justify-center">
+                        <span class="text-offwhite font-medium bg-marsala-dark/80 px-4 py-2 rounded-full text-sm border border-gold/40">
+                            <i class="fa-solid fa-magnifying-glass-plus mr-2"></i>Expandir Foto
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Foto 2 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md cursor-pointer bg-white" onclick="openImageModal('conjunto-preto.jpg', 'Conjunto Renda Preto Clássico')">
+                    <img src="conjunto-preto.jpg" alt="Mostruário Preto Clássico" class="w-full h-80 object-cover group-hover:scale-105 smooth-transition" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=600&q=80'">
+                    <div class="absolute inset-0 bg-marsala/40 opacity-0 group-hover:opacity-100 smooth-transition flex items-center justify-center">
+                        <span class="text-offwhite font-medium bg-marsala-dark/80 px-4 py-2 rounded-full text-sm border border-gold/40">
+                            <i class="fa-solid fa-magnifying-glass-plus mr-2"></i>Expandir Foto
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Foto 3 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md cursor-pointer bg-white" onclick="openImageModal('conjunto-marsala.jpg', 'Conjunto Renda Marsala Nobre')">
+                    <img src="conjunto-marsala.jpg" alt="Mostruário Marsala Nobre" class="w-full h-80 object-cover group-hover:scale-105 smooth-transition" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=600&q=80'">
+                    <div class="absolute inset-0 bg-marsala/40 opacity-0 group-hover:opacity-100 smooth-transition flex items-center justify-center">
+                        <span class="text-offwhite font-medium bg-marsala-dark/80 px-4 py-2 rounded-full text-sm border border-gold/40">
+                            <i class="fa-solid fa-magnifying-glass-plus mr-2"></i>Expandir Foto
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre a Marca -->
+    <section id="sobre" class="py-16 bg-offwhite">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="font-serif text-3xl font-bold text-marsala mb-4">Sobre a La Belle Lingerie</h2>
+            <p class="text-gray-600 leading-relaxed mb-6 font-light">
+                A La Belle Lingerie nasceu com a missão de proporcionar auto-estima, conforto e elegância para todas as mulheres. Trabalhamos exclusivamente com materiais de alta qualidade, rendas macias que não incomodam a pele e modelagens pensadas para valorizar cada curva.
+            </p>
+            <div class="flex justify-center items-center gap-8 text-gold font-serif text-sm">
+                <span>✦ Qualidade Premium</span>
+                <span>✦ Entrega Rápida</span>
+                <span>✦ Atendimento Exclusivo</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-marsala-dark text-offwhite py-12 border-t border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <h3 class="font-serif text-2xl font-bold text-gold mb-2">LA BELLE</h3>
+                <p class="text-xs text-gray-300 font-light">Sua boutique de lingeries elegantes e exclusivas.</p>
+            </div>
+            <div>
+                <h4 class="text-sm font-semibold uppercase text-gold tracking-wider mb-3">Atendimento</h4>
+                <p class="text-sm text-gray-300 mb-1">WhatsApp: <a href="https://wa.me/5564984792747" target="_blank" class="hover:text-gold">(64) 98479-2747</a></p>
+                <p class="text-sm text-gray-300">Segunda a Sábado: 08h às 19h</p>
+            </div>
+            <div>
+                <h4 class="text-sm font-semibold uppercase text-gold tracking-wider mb-3">Pagamentos Aceitos</h4>
+                <div class="flex justify-center md:justify-start gap-3 text-xl text-gray-300">
+                    <i class="fa-brands fa-pix" title="Pix"></i>
+                    <i class="fa-solid fa-credit-card" title="Cartões de Crédito"></i>
+                    <i class="fa-solid fa-[#C5A059] fa-barcode" title="Boleto"></i>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-marsala text-center text-xs text-gray-400">
+            &copy; 2026 La Belle Lingerie. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Slide-over do Carrinho -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-offwhite shadow-2xl flex flex-col">
+                <div class="p-6 bg-marsala text-offwhite flex justify-between items-center">
+                    <h2 class="font-serif text-xl font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-gold"></i> Seu Carrinho
+                    </h2>
+                    <button onclick="toggleCart()" class="text-offwhite hover:text-gold p-1">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Itens do Carrinho -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dinâmico via JS -->
+                </div>
+
+                <!-- Footer do Carrinho -->
+                <div class="p-6 bg-offwhite-warm border-t border-marsala/10 space-y-4">
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between text-gray-600">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal">R$ 0,00</span>
+                        </div>
+                        <div id="discount-row" class="flex justify-between text-marsala hidden">
+                            <span>Desconto (Cupom)</span>
+                            <span id="cart-discount">- R$ 0,00</span>
+                        </div>
+                        <div class="flex justify-between font-bold text-lg text-marsala pt-2 border-t border-marsala/10">
+                            <span>Total</span>
+                            <span id="cart-total">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <!-- Cupom -->
+                    <div class="flex gap-2">
+                        <input type="text" id="coupon-input" placeholder="Cupom (ex: LABELLE10)" class="flex-1 px-3 py-2 text-sm border border-marsala/20 rounded-md uppercase focus:outline-none focus:border-marsala">
+                        <button onclick="applyCoupon()" class="bg-gray-800 text-offwhite px-4 py-2 rounded-md text-sm font-medium hover:bg-marsala smooth-transition">Aplicar</button>
+                    </div>
+
+                    <!-- Botão WhatsApp -->
+                    <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-3 rounded-lg shadow-md flex items-center justify-center gap-2 smooth-transition">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Finalizar Pedido via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tabela de Medidas -->
+    <div id="size-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+        <div class="bg-offwhite rounded-xl shadow-2xl max-w-lg w-full p-6 relative">
+            <button onclick="closeSizeGuide()" class="absolute top-4 right-4 text-gray-400 hover:text-marsala">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="font-serif text-2xl font-bold text-marsala mb-2">Tabela de Medidas</h3>
+            <p class="text-xs text-gray-500 mb-4">Utilize uma fita métrica para encontrar seu tamanho ideal.</p>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs text-left text-gray-600 border-collapse">
+                    <thead>
+                        <tr class="bg-marsala text-offwhite">
+                            <th class="p-2 rounded-tl">Tamanho</th>
+                            <th class="p-2">Busto (cm)</th>
+                            <th class="p-2">Tórax (cm)</th>
+                            <th class="p-2 rounded-tr">Cintura (cm)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr><td class="p-2 font-bold text-marsala">P (40)</td><td class="p-2">80 - 88</td><td class="p-2">68 - 72</td><td class="p-2">60 - 68</td></tr>
+                        <tr class="bg-marsala/5"><td class="p-2 font-bold text-marsala">M (42)</td><td class="p-2">89 - 92</td><td class="p-2">73 - 77</td><td class="p-2">69 - 76</td></tr>
+                        <tr><td class="p-2 font-bold text-marsala">G (44)</td><td class="p-2">93 - 96</td><td class="p-2">78 - 82</td><td class="p-2">77 - 84</td></tr>
+                        <tr class="bg-marsala/5"><td class="p-2 font-bold text-marsala">GG (46)</td><td class="p-2">97 - 102</td><td class="p-2">83 - 87</td><td class="p-2">85 - 92</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button onclick="closeSizeGuide()" class="mt-6 w-full bg-marsala text-offwhite py-2 rounded-md font-medium text-sm">Entendi</button>
+        </div>
+    </div>
+
+    <!-- Modal Galeria de Imagem Expandida -->
+    <div id="image-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden" onclick="closeImageModal()">
+        <div class="relative max-w-2xl w-full p-2" onclick="event.stopPropagation()">
+            <button onclick="closeImageModal()" class="absolute -top-10 right-0 text-white text-2xl hover:text-gold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="modal-img" src="" alt="" class="w-full max-h-[80vh] object-contain rounded-lg border-2 border-gold/40 shadow-2xl">
+            <p id="modal-caption" class="text-center text-offwhite font-serif mt-3 text-lg"></p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Dados dos 3 Produtos Principais
+        const products = [
+            {
+                id: 1,
+                name: "Conjunto Renda Azul Royal",
+                price: 54.90,
+                image: "conjunto-azul.jpg",
+                description: "Conjunto em renda trabalhada azul royal com bojo estruturado e calcinha rendada confort."
+            },
+            {
+                id: 2,
+                name: "Conjunto Renda Preto Clássico",
+                price: 54.90,
+                image: "conjunto-preto.jpg",
+                description: "Conjunto clássico preto com sutiã de renda com aro e calcinha combinando."
+            },
+            {
+                id: 3,
+                name: "Conjunto Renda Marsala Nobre",
+                price: 54.90,
+                image: "conjunto-marsala.jpg",
+                description: "Conjunto marsala sofisticado com detalhes trabalhados em renda floral premium."
+            }
+        ];
+
+        let cart = [];
+        let appliedDiscount = 0;
+
+        // Renderizar Produtos
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = products.map(product => `
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border border-marsala/10 hover:shadow-xl smooth-transition flex flex-col">
+                    <div class="relative overflow-hidden group">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-80 object-cover group-hover:scale-105 smooth-transition" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=600&q=80'">
+                        <span class="absolute top-3 right-3 bg-marsala text-offwhite text-xs px-2.5 py-1 rounded-full font-bold shadow">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
+                        <button onclick="openImageModal('${product.image}', '${product.name}')" class="absolute bottom-3 left-3 bg-offwhite/90 text-marsala text-xs px-3 py-1.5 rounded-full font-medium shadow opacity-0 group-hover:opacity-100 smooth-transition flex items-center gap-1 hover:bg-marsala hover:text-offwhite">
+                            <i class="fa-solid fa-magnifying-glass"></i> Ver Detalhes
+                        </button>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="font-serif text-lg font-bold text-marsala mb-1">${product.name}</h3>
+                            <p class="text-xs text-gray-500 font-light leading-relaxed">${product.description}</p>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1">Selecione o Tamanho:</label>
+                            <select id="size-${product.id}" class="w-full text-xs border border-gray-300 rounded-md p-2 bg-offwhite focus:outline-none focus:border-marsala mb-3">
+                                <option value="P (40)">P (Tamanho 40)</option>
+                                <option value="M (42)">M (Tamanho 42)</option>
+                                <option value="G (44)">G (Tamanho 44)</option>
+                                <option value="GG (46)">GG (Tamanho 46)</option>
+                            </select>
+                            <button onclick="addToCart(${product.id})" class="w-full bg-marsala hover:bg-marsala-dark text-offwhite py-2.5 rounded-md font-medium text-xs tracking-wider uppercase smooth-transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Funções do Carrinho
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const sizeSelect = document.getElementById(`size-${productId}`);
+            const selectedSize = sizeSelect.value;
+
+            const existingItem = cart.find(item => item.id === productId && item.size === selectedSize);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, size: selectedSize, quantity: 1 });
+            }
+
+            updateCartUI();
+            toggleCart(true);
+        }
+
+        function removeFromCart(productId, size) {
+            cart = cart.filter(item => !(item.id === productId && item.size === size));
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItems = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartSubtotal = document.getElementById('cart-subtotal');
+            const cartTotal = document.getElementById('cart-total');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalCount;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="text-center py-12 text-gray-400">
+                        <i class="fa-solid fa-bag-shopping text-4xl mb-3"></i>
+                        <p class="text-sm">Seu carrinho está vazio.</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="flex items-center gap-4 bg-white p-3 rounded-lg border border-marsala/10">
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=600&q=80'">
+                        <div class="flex-1">
+                            <h4 class="font-serif text-sm font-bold text-marsala">${item.name}</h4>
+                            <span class="text-xs text-gold font-medium">Tam: ${item.size}</span>
+                            <div class="text-xs font-semibold text-gray-700 mt-1">
+                                ${item.quantity}x R$ ${item.price.toFixed(2).replace('.', ',')}
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${item.id}, '${item.size}')" class="text-gray-400 hover:text-marsala p-1">
+                            <i class="fa-solid fa-trash-can text-sm"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const discountValue = subtotal * appliedDiscount;
+            const total = subtotal - discountValue;
+
+            cartSubtotal.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+            if (appliedDiscount > 0) {
+                document.getElementById('discount-row').classList.remove('hidden');
+                document.getElementById('cart-discount').textContent = `- R$ ${discountValue.toFixed(2).replace('.', ',')}`;
+            } else {
+                document.getElementById('discount-row').classList.add('hidden');
+            }
+            cartTotal.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        }
+
+        function toggleCart(forceOpen = false) {
+            const drawer = document.getElementById('cart-drawer');
+            if (forceOpen) {
+                drawer.classList.remove('hidden');
+            } else {
+                drawer.classList.toggle('hidden');
+            }
+        }
+
+        function applyCoupon() {
+            const input = document.getElementById('coupon-input').value.trim().toUpperCase();
+            if (input === 'LABELLE10') {
+                appliedDiscount = 0.10;
+                alert('Cupom de 10% de desconto aplicado com sucesso!');
+            } else if (input === '') {
+                appliedDiscount = 0;
+            } else {
+                alert('Cupom inválido.');
+                appliedDiscount = 0;
+            }
+            updateCartUI();
+        }
+
+        // WhatsApp Checkout
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert('Adicione produtos ao carrinho antes de finalizar.');
+                return;
+            }
+
+            const phone = "5564984792747";
+            let message = "Olá, La Belle Lingerie! Gostaria de finalizar meu pedido:
+
+";
+
+            cart.forEach(item => {
+                message += `• *${item.name}*
+  Tamanho: ${item.size}
+  Qtd: ${item.quantity}x - R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}
+
+`;
+            });
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const discountValue = subtotal * appliedDiscount;
+            const total = subtotal - discountValue;
+
+            if (appliedDiscount > 0) {
+                message += `Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}
+`;
+                message += `Desconto: -R$ ${discountValue.toFixed(2).replace('.', ',')}
+`;
+            }
+            message += `*Total: R$ ${total.toFixed(2).replace('.', ',')}*
+
+`;
+            message += "Como podemos prosseguir com o pagamento e entrega?";
+
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Modais Auxiliares
+        function openSizeGuide() {
+            document.getElementById('size-modal').classList.remove('hidden');
+        }
+        function closeSizeGuide() {
+            document.getElementById('size-modal').classList.add('hidden');
+        }
+
+        function openImageModal(src, caption) {
+            document.getElementById('modal-img').src = src;
+            document.getElementById('modal-caption').textContent = caption;
+            document.getElementById('image-modal').classList.remove('hidden');
+        }
+        function closeImageModal() {
+            document.getElementById('image-modal').classList.add('hidden');
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+        });
+    </script>
+</body>
+</html>
